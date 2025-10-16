@@ -13,6 +13,29 @@ flask --app app run --debug
 
 A API ficará disponível em `http://127.0.0.1:5000`.
 
+## Deploy 100% gratuito na Render
+
+A Render oferece um plano gratuito permanente para aplicações web que é suficiente
+para colocar esta API no ar. Após criar uma conta gratuita, basta seguir os passos abaixo:
+
+1. Faça o fork deste repositório para a sua conta do GitHub.
+2. Acesse o [dashboard da Render](https://dashboard.render.com/) e clique em **New ➜ Web Service**.
+3. Conecte a sua conta do GitHub e selecione o fork do projeto.
+4. Na configuração inicial escolha:
+   - **Environment**: `Python`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `gunicorn app:app --bind 0.0.0.0:$PORT`
+   - **Region**: escolha a mais próxima dos seus usuários.
+   - **Instance Type**: `Free`.
+5. Confirme a criação. A Render vai instalar as dependências, gerar a imagem e iniciar o serviço.
+
+O arquivo `render.yaml` presente no repositório permite automatizar o provisionamento
+pela opção **New ➜ Blueprint** na Render. Ao usar essa modalidade, a plataforma lê
+o arquivo e cria o serviço com os comandos de build e execução corretos.
+
+Assim que o deploy finalizar, a Render exibirá a URL pública do serviço, permitindo
+que você visualize e consuma a API imediatamente sem custos.
+
 ## Recursos principais
 
 ### Usuários
